@@ -1,0 +1,79 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Metric Converter
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Metric Converter</ion-title>
+      <p>By: Ryan Rattu</p>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <div id="Metric">
+      <p>Pilih Metric: </p>
+      <ion-select placeholder="Choose one:" [(ngModel)]="conversionType" (ionChange)="onConversionTypeChange()">
+        <ion-select-option value="Panjang">Panjang</ion-select-option>
+        <ion-select-option value="Massa">Massa</ion-select-option>
+        <ion-select-option value="Waktu">Waktu</ion-select-option>
+        <ion-select-option value="Arus Listrik">Arus Listrik</ion-select-option>
+        <ion-select-option value="Suhu">Suhu</ion-select-option>
+        <ion-select-option value="Intensitas Cahaya">Intensitas Cahaya</ion-select-option>
+        <ion-select-option value="Jumlah Zat">Jumlah Zat</ion-select-option>
+      </ion-select>
+    </div>
+
+    <div id="From">
+      <p>From: </p>
+      <ion-item>
+        <ion-label>Dari:</ion-label>
+        <ion-select
+          [(ngModel)]="fromUnit"
+          [disabled]="!currentOptions.length"
+          placeholder="--Pilih Satuan"
+          (ionChange)="onUnitChange()"
+        >
+          <ion-select-option *ngFor="let unit of currentOptions" [value]="unit">
+            {{ unit }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div id="To">
+      <p>To: </p>
+      <ion-item>
+        <ion-label>Ke:</ion-label>
+        <ion-select
+          [(ngModel)]="toUnit"
+          [disabled]="!currentOptions.length"
+          placeholder="--Pilih Satuan"
+          (ionChange)="onUnitChange()"
+        >
+          <ion-select-option *ngFor="let unit of currentOptions" [value]="unit">
+            {{ unit }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div id="Input">
+      <p>Nilai: </p>
+      <ion-input 
+        [(ngModel)]="inputValue" 
+        type="number" 
+        placeholder="Masukkan Nilai:" 
+        (ionInput)="onInputChange()"
+      ></ion-input>
+    </div>
+
+    <div id="Hasil">
+      <p>Hasil: {{ result }}</p>
+    </div>
+  </div>
+</ion-content>

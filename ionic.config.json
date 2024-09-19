@@ -1,0 +1,7 @@
+{
+  "name": "Tugas_1_Metric_Converter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
